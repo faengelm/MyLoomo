@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.gmail.faengelm.myloomo">
+
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@android:style/Theme.Holo.Light">
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="landscape">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <receiver
+            android:name=".LoomoIntentReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.segway.robot.action.TO_SBV" />
+                <action android:name="com.segway.robot.action.TO_ROBOT" />
+                <action android:name="com.segway.robot.action.STEP_ON" />
+                <action android:name="com.segway.robot.action.STEP_OFF" />
+                <action android:name="com.segway.robot.action.POWER_BUTTON_PRESSED" />
+                <action android:name="com.segway.robot.action.SLEEP" />
+                <action android:name="com.segway.robot.action.LIFT_UP" />
+                <action android:name="com.segway.robot.action.BATTERY_CHANGED" />
+                <action android:name="com.segway.robot.action.POWER_DOWN" />
+                <action android:name="com.segway.robot.action.PUSHING" />
+                <action android:name="com.segway.robot.action.POWER_BUTTON_RELEASED" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".Services.ObstacleService"
+            android:enabled="true"
+            android:exported="false"></service>
+    </application>
+
+</manifest>
